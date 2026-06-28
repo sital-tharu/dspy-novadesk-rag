@@ -53,3 +53,10 @@ def split_into_chunks(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     print(f"✅ Created {len(chunks)} chunks "
           f"(size={chunk_size} words, overlap={overlap} words)")
     return chunks
+
+# ── Step 3: Save Chunks to JSON ────────────────────────────────────
+def save_chunks(chunks, path=CHUNKS_PATH):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(chunks, f, indent=2)
+    print(f"✅ Saved chunks to {path}")
