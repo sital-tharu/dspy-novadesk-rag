@@ -60,3 +60,41 @@ def save_chunks(chunks, path=CHUNKS_PATH):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(chunks, f, indent=2)
     print(f"✅ Saved chunks to {path}")
+
+# ── Step 4: Load into ChromaDB ─────────────────────────────────────
+def load_into_chromadb(chunks, db_path=CHROMA_DB_PATH):
+    """
+    Embeds each chunk using sentence-transformers
+    and stores in ChromaDB for vector search.
+    """
+    # Use local sentence-transformers model (no API key needed)
+    embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
+        model_name="all-MiniLM-L6-v2"   # small, fast, good quality
+    )
+
+    # Init ChromaDB
+    client = chromadb.PersistentClient(path=db_path)
+
+    # Delete existing collection if re-running
+    try:
+        client.delete_collection(COLLECTION_NAME)
+        print(f"🔄 Deleted existing collection: {COLLECTION_NAME}")
+    except:
+        pass
+
+    # Create fresh collection
+    collection = client.create_collection(
+        name=COLLECTION_NAME,
+        embedding_function=embedding_fn,
+        metadata={"hnsw:space": "cosine"}  # cosine similarity
+    )
+
+    # Add chunks
+    collection.add(
+        ids       = [c["id"]   for c in chunks],
+        documents = [c["text"] for c in chunks],
+    )
+
+    print(f"✅ Loaded {len(chunks)} chunks into ChromaDB")
+    print(f"✅ Collection '{COLLECTION_NAME}' ready at '{db_path}/'")
+    return collection
