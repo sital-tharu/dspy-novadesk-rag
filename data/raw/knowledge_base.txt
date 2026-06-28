@@ -1,0 +1,271 @@
+# NovaDesk Knowledge Base
+
+## SECTION 1: PRODUCT OVERVIEW
+
+NovaDesk is a cloud-based customer support platform designed for
+growing businesses. It centralizes customer conversations across
+email, live chat, and social media into a single inbox. Teams can
+collaborate on tickets, automate repetitive tasks, and measure
+support performance through built-in analytics.
+
+NovaDesk is built for support teams of all sizes — from solo
+founders handling their own support to enterprise teams with
+hundreds of agents.
+
+---
+
+## SECTION 2: PRICING PLANS
+
+NovaDesk offers three pricing plans:
+
+### Starter Plan — $29/month
+- Up to 3 agents
+- Email support channel only
+- 1,000 tickets per month
+- Basic reporting (last 30 days)
+- Community support only
+- No integrations
+
+### Pro Plan — $79/month
+- Up to 15 agents
+- Email + live chat + social media channels
+- Unlimited tickets
+- Advanced reporting (last 12 months)
+- Priority email support (24hr response)
+- Up to 10 integrations
+- Custom ticket fields
+- Saved replies (macros)
+
+### Enterprise Plan — $199/month
+- Unlimited agents
+- All channels including WhatsApp and SMS
+- Unlimited tickets
+- Full reporting with custom dashboards
+- Dedicated account manager
+- 24/7 phone + email support
+- Unlimited integrations
+- SSO (Single Sign-On)
+- Custom SLA rules
+- Data export and API access
+
+All plans come with a 14-day free trial. No credit card required
+for trial. Annual billing gives 20% discount on all plans.
+
+---
+
+## SECTION 3: BILLING AND ACCOUNT MANAGEMENT
+
+### Upgrading a Plan
+You can upgrade your plan at any time from Settings > Billing.
+The upgrade takes effect immediately. You will be charged a
+prorated amount for the remainder of the current billing cycle.
+
+### Downgrading a Plan
+Downgrading is allowed once per billing cycle. The downgrade
+takes effect at the start of the next billing cycle, not
+immediately. If you downgrade from Pro to Starter, you will
+lose access to live chat, social media channels, and integrations
+at the end of the current billing cycle.
+
+### Cancelling a Subscription
+You can cancel at any time from Settings > Billing > Cancel Plan.
+After cancellation, your account remains active until the end of
+the current billing period. After that, your account is locked
+and data is retained for 60 days before permanent deletion.
+
+### Refund Policy
+NovaDesk does not offer refunds for partial months. Annual plan
+subscribers can request a refund within 30 days of purchase.
+
+### Changing Payment Method
+Go to Settings > Billing > Payment Methods to add or change your
+card. NovaDesk accepts Visa, Mastercard, and American Express.
+PayPal is not supported.
+
+---
+
+## SECTION 4: TEAM AND AGENT MANAGEMENT
+
+### Adding Agents
+Agents can be added from Settings > Team > Invite Agent. An
+invitation email is sent to the agent. The invitation expires
+after 48 hours. On the Starter plan, you cannot add more than
+3 agents. Attempting to add a 4th agent will prompt you to
+upgrade to Pro.
+
+### Agent Roles
+NovaDesk has three agent roles:
+
+- **Admin**: Full access to all settings, billing, and reports.
+  Can add or remove agents and change roles.
+- **Agent**: Can view and respond to tickets. Cannot access
+  billing or team settings.
+- **Viewer**: Read-only access to tickets and reports. Cannot
+  respond to tickets or change any settings.
+
+### Removing an Agent
+Admins can remove agents from Settings > Team. Removed agents
+lose access immediately. Their previously handled tickets remain
+in the system and are reassigned to the admin who removed them.
+
+### Agent Availability
+Agents can set their status to Available, Busy, or Away. When
+set to Away, tickets are not auto-assigned to that agent.
+Live chat is only routed to agents with Available status.
+
+---
+
+## SECTION 5: TICKET MANAGEMENT
+
+### Creating a Ticket
+Tickets are created automatically when a customer sends an email
+to your support address or initiates a live chat. Tickets can
+also be created manually by agents from the New Ticket button.
+
+### Ticket Status
+Tickets can have the following statuses:
+- **Open**: Awaiting agent response
+- **Pending**: Awaiting customer reply
+- **Resolved**: Issue marked as solved
+- **Closed**: Resolved tickets auto-close after 7 days of
+  inactivity, or can be closed manually
+
+### Ticket Assignment
+Tickets are auto-assigned using round-robin by default. Admins
+can change assignment rules from Settings > Automation.
+Tickets can also be manually assigned or reassigned by any agent.
+
+### Ticket Priority
+Agents can set ticket priority to Low, Medium, High, or Urgent.
+Urgent tickets appear at the top of the queue and trigger
+email notifications to all admins.
+
+### Merging Tickets
+Agents can merge duplicate tickets. The older ticket becomes
+the primary. All replies from both tickets are combined.
+The merged ticket cannot be unmerged.
+
+---
+
+## SECTION 6: LIVE CHAT
+
+### Setting Up Live Chat
+Live chat is available on Pro and Enterprise plans only.
+To enable, go to Settings > Channels > Live Chat and copy
+the chat widget code into your website's HTML.
+
+### Chat Routing
+Incoming chats are routed to Available agents only. If no
+agents are available, the customer sees an offline message
+and can leave their email for a follow-up ticket.
+
+### Chat Hours
+You can set business hours for live chat from Settings >
+Channels > Live Chat > Business Hours. Outside business hours,
+the chat widget shows an offline form automatically.
+
+### Chat Transcripts
+All chat transcripts are saved automatically as tickets.
+Customers can request a copy of their transcript via email
+from the chat window.
+
+---
+
+## SECTION 7: INTEGRATIONS
+
+### Available Integrations
+Pro plan supports up to 10 integrations. Enterprise plan
+supports unlimited integrations. Starter plan has no
+integrations.
+
+Current integrations include:
+- Slack (receive ticket notifications in Slack channels)
+- Jira (create Jira issues from tickets)
+- Salesforce (sync customer data)
+- Shopify (view order details inside tickets)
+- Zapier (connect to 5000+ apps)
+- GitHub (link tickets to GitHub issues)
+- HubSpot (sync contacts and deals)
+- Google Analytics (track chat widget performance)
+
+### Setting Up an Integration
+Go to Settings > Integrations, choose the integration, and
+follow the setup wizard. Most integrations require OAuth
+authorization with the third-party service.
+
+### Removing an Integration
+Go to Settings > Integrations > Manage, and click Disconnect.
+This immediately stops data sync but does not delete
+historical data already synced.
+
+---
+
+## SECTION 8: REPORTING AND ANALYTICS
+
+### Available Reports
+- Ticket Volume: Total tickets by day, week, or month
+- Response Time: Average first response and resolution time
+- Agent Performance: Tickets handled and satisfaction scores
+- Channel Breakdown: Ticket sources by channel
+- Customer Satisfaction (CSAT): Ratings from resolved tickets
+
+### Report Access by Plan
+- Starter: Last 30 days only, basic ticket volume report
+- Pro: Last 12 months, all reports except custom dashboards
+- Enterprise: Full history, all reports, custom dashboards
+
+### CSAT Surveys
+Customer satisfaction surveys are sent automatically after a
+ticket is resolved. Customers rate their experience 1-5 stars.
+CSAT scores are visible in the Agent Performance report.
+
+---
+
+## SECTION 9: SECURITY AND DATA
+
+### Data Storage
+All NovaDesk data is stored on AWS servers in the US-East
+region by default. Enterprise customers can request EU or
+APAC region storage.
+
+### Data Retention
+Active account data is retained indefinitely. Cancelled
+account data is retained for 60 days then permanently deleted.
+Agents can export all ticket data before cancellation from
+Settings > Data > Export.
+
+### SSO (Single Sign-On)
+SSO is available on Enterprise plan only. Supports SAML 2.0
+and OAuth 2.0. Setup requires IT admin access and takes
+approximately 2 business days to configure with NovaDesk
+support team.
+
+### Two-Factor Authentication
+2FA is available on all plans. Can be enforced company-wide
+by admins from Settings > Security > Enforce 2FA.
+
+---
+
+## SECTION 10: TROUBLESHOOTING
+
+### Emails Not Creating Tickets
+Check that your support email is correctly forwarded to your
+NovaDesk inbox address. Go to Settings > Channels > Email to
+find your unique forwarding address. Also check your spam
+filters are not blocking NovaDesk confirmation emails.
+
+### Live Chat Widget Not Showing
+Ensure the widget code is placed before the closing </body>
+tag on your website. Clear your browser cache. Check that
+your domain is whitelisted in Settings > Channels > Live Chat
+> Allowed Domains.
+
+### Agent Not Receiving Tickets
+Check the agent's availability status — tickets are not
+assigned to agents with Away status. Also verify the agent
+is included in the assignment rules under Settings > Automation.
+
+### Cannot Add More Agents
+If you cannot add more agents, you have reached your plan
+limit. Upgrade your plan to add more agents. Starter plan
+maximum is 3 agents, Pro plan maximum is 15 agents.
