@@ -98,3 +98,44 @@ def load_into_chromadb(chunks, db_path=CHROMA_DB_PATH):
     print(f"✅ Loaded {len(chunks)} chunks into ChromaDB")
     print(f"✅ Collection '{COLLECTION_NAME}' ready at '{db_path}/'")
     return collection
+
+# ── Step 5: Test Retrieval ─────────────────────────────────────────
+def test_retrieval(query="How much does the Pro plan cost?"):
+    embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
+        model_name="all-MiniLM-L6-v2"
+    )
+    client     = chromadb.PersistentClient(path=CHROMA_DB_PATH)
+    collection = client.get_collection(
+        name=COLLECTION_NAME,
+        embedding_function=embedding_fn
+    )
+
+    results = collection.query(
+        query_texts=[query],
+        n_results=3
+    )
+
+    print(f"\n── Test Retrieval ──")
+    print(f"Query: {query}\n")
+    for i, doc in enumerate(results["documents"][0]):
+        print(f"Result {i+1}:")
+        print(f"  ID   : {results['ids'][0][i]}")
+        print(f"  Text : {doc[:200]}...")
+        print()
+
+
+# ── Main ───────────────────────────────────────────────────────────
+def run_ingestion():
+    print("🚀 Starting ingestion pipeline...\n")
+
+    text       = load_text()
+    chunks     = split_into_chunks(text)
+    save_chunks(chunks)
+    load_into_chromadb(chunks)
+    test_retrieval()
+
+    print("🎉 Ingestion complete! ChromaDB is ready.")
+
+
+if __name__ == "__main__":
+    run_ingestion()
