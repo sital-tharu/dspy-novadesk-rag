@@ -108,3 +108,39 @@ def get_dataset():
             question="Are chat transcripts saved automatically?",
             answer="Yes, all chat transcripts are saved automatically as tickets."
         ),
+        # ── SECTION 7: INTEGRATIONS (2 questions) ──────────────────
+        dspy.Example(
+            question="Which plan has no integrations available?",
+            answer="The Starter plan has no integrations."
+        ),
+        dspy.Example(
+            question="Does NovaDesk integrate with Shopify?",
+            answer="Yes, NovaDesk integrates with Shopify to view order details inside tickets."
+        ),
+
+        # ── SECTION 8: REPORTING (2 questions) ─────────────────────
+        dspy.Example(
+            question="How far back can Pro plan users access reports?",
+            answer="Pro plan users can access reports for the last 12 months."
+        ),
+        dspy.Example(
+            question="Which plan supports custom dashboards?",
+            answer="Custom dashboards are available on the Enterprise plan only."
+        ),
+
+        # ── SECTION 9: SECURITY (2 questions) ──────────────────────
+        dspy.Example(
+            question="Which plan includes Single Sign-On SSO?",
+            answer="SSO is available on the Enterprise plan only."
+        ),
+        dspy.Example(
+            question="Is two factor authentication available on all plans?",
+            answer="Yes, 2FA is available on all plans and can be enforced company-wide by admins."
+        ),
+
+        # ── SECTION 10: TROUBLESHOOTING (1 question) ───────────────
+        dspy.Example(
+            question="Why is my live chat widget not showing on my website?",
+            answer="Ensure the widget code is placed before the closing body tag, clear your browser cache, and check that your domain is whitelisted in Settings > Channels > Live Chat > Allowed Domains."
+        ),
+    ]
