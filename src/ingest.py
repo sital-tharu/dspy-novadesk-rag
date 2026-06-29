@@ -1,7 +1,8 @@
 # src/ingest.py
 import os
-import json
+os.environ["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"  # suppress HF warning
 import re
+import json
 import chromadb
 from chromadb.utils import embedding_functions
 
