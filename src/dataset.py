@@ -77,3 +77,34 @@ def get_dataset():
             question="Can a Viewer role access billing settings?",
             answer="No, Viewers have read-only access to tickets and reports only. They cannot access billing or team settings."
         ),
+        # ── SECTION 5: TICKETS (4 questions) ───────────────────────
+        dspy.Example(
+            question="When does a resolved ticket automatically close?",
+            answer="Resolved tickets auto-close after 7 days of inactivity."
+        ),
+        dspy.Example(
+            question="What ticket priority triggers email notifications to all admins?",
+            answer="Urgent priority tickets trigger email notifications to all admins."
+        ),
+        dspy.Example(
+            question="Can a merged ticket be unmerged?",
+            answer="No, a merged ticket cannot be unmerged."
+        ),
+        dspy.Example(
+            question="How are tickets assigned by default?",
+            answer="Tickets are auto-assigned using round-robin by default."
+        ),
+
+        # ── SECTION 6: LIVE CHAT (3 questions) ─────────────────────
+        dspy.Example(
+            question="Which plans include live chat support?",
+            answer="Live chat is available on Pro and Enterprise plans only."
+        ),
+        dspy.Example(
+            question="What happens when no agents are available for live chat?",
+            answer="The customer sees an offline message and can leave their email for a follow-up ticket."
+        ),
+        dspy.Example(
+            question="Are chat transcripts saved automatically?",
+            answer="Yes, all chat transcripts are saved automatically as tickets."
+        ),
