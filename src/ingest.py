@@ -10,8 +10,8 @@ KNOWLEDGE_BASE_PATH = "data/raw/knowledge_base.txt"
 CHUNKS_PATH         = "data/processed/chunks.json"
 CHROMA_DB_PATH      = "chroma_db"
 COLLECTION_NAME     = "novadesk_kb"
-CHUNK_SIZE          = 200   # words per chunk
-CHUNK_OVERLAP       = 40    # words overlap between chunks
+CHUNK_SIZE    = 80    # was 200 — smaller = more precise
+CHUNK_OVERLAP = 15    # was 40
 
 
 # ── Step 1: Load Raw Text ───────────────────────────────────────────
@@ -25,34 +25,41 @@ def load_text(path=KNOWLEDGE_BASE_PATH):
 # ── Step 2: Split into Sections first, then Chunks ─────────────────
 def split_into_chunks(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     """
-    Split text into overlapping word-level chunks.
-    Overlap ensures context is not lost at chunk boundaries.
+    Split by section first, then chunk within each section.
+    This keeps related content together.
     """
-    # Remove markdown headers and clean up
-    text = re.sub(r"#{1,3} ", "", text)       # remove # ## ###
-    text = re.sub(r"\n{3,}", "\n\n", text)    # collapse blank lines
-    text = text.strip()
+    # Split into sections by --- divider
+    sections = re.split(r"\n---\n", text)
+    
+    all_chunks = []
 
-    # Split into words
-    words = text.split()
-    chunks = []
-    start  = 0
+    for section in sections:
+        # Clean section text
+        section = re.sub(r"#{1,3} ", "", section)
+        section = re.sub(r"\n{3,}", "\n\n", section)
+        section = section.strip()
 
-    while start < len(words):
-        end   = start + chunk_size
-        chunk = " ".join(words[start:end])
-        chunks.append({
-            "id"   : f"chunk_{len(chunks):03d}",
-            "text" : chunk,
-            "start": start,
-            "end"  : min(end, len(words))
-        })
-        # Move forward by chunk_size minus overlap
-        start += chunk_size - overlap
+        if not section:
+            continue
 
-    print(f"✅ Created {len(chunks)} chunks "
+        # Split section into words
+        words = section.split()
+        start = 0
+
+        while start < len(words):
+            end   = start + chunk_size
+            chunk = " ".join(words[start:end])
+
+            all_chunks.append({
+                "id"  : f"chunk_{len(all_chunks):03d}",
+                "text": chunk,
+            })
+
+            start += chunk_size - overlap
+
+    print(f"✅ Created {len(all_chunks)} chunks "
           f"(size={chunk_size} words, overlap={overlap} words)")
-    return chunks
+    return all_chunks
 
 # ── Step 3: Save Chunks to JSON ────────────────────────────────────
 def save_chunks(chunks, path=CHUNKS_PATH):
