@@ -42,3 +42,24 @@ class NovaRetriever(dspy.Retrieve):
 
         return dspy.Prediction(passages=passages)
     
+# ── Test Function ────────────────────────────────────────────────────
+def test_retriever():
+    retriever = NovaRetriever(k=3)
+
+    test_queries = [
+        "How much does the Pro plan cost?",
+        "Can I downgrade my plan?",
+        "What happens to my data if I cancel?",
+        "How many agents can I add on Starter plan?",
+    ]
+
+    for query in test_queries:
+        print(f"\n{'─'*60}")
+        print(f"Query: {query}")
+        result = retriever(query)
+        for i, passage in enumerate(result.passages):
+            print(f"\n  Passage {i+1}: {passage[:150]}...")
+
+
+if __name__ == "__main__":
+    test_retriever()
