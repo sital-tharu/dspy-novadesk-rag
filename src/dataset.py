@@ -144,3 +144,23 @@ def get_dataset():
             answer="Ensure the widget code is placed before the closing body tag, clear your browser cache, and check that your domain is whitelisted in Settings > Channels > Live Chat > Allowed Domains."
         ),
     ]
+# Tag all inputs
+    examples = [e.with_inputs("question") for e in examples]
+
+    # Split: 20 train, 10 dev
+    trainset = examples[:20]
+    devset   = examples[20:]
+
+    return trainset, devset
+
+# ── Preview ─────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    trainset, devset = get_dataset()
+
+    print(f"Trainset : {len(trainset)} examples")
+    print(f"Devset   : {len(devset)} examples")
+
+    print(f"\n── Sample Questions ──")
+    for i, ex in enumerate(devset):
+        print(f"\n  Q{i+1}: {ex.question}")
+        print(f"  A : {ex.answer}")
