@@ -18,3 +18,27 @@ def get_collection():
         embedding_function=embedding_fn
     )
     return collection
+
+# ── DSPy-Compatible Retriever ────────────────────────────────────────
+class NovaRetriever(dspy.Retrieve):
+    """
+    Custom DSPy retriever backed by ChromaDB.
+    Takes a query string, returns top-k relevant passages.
+    """
+
+    def __init__(self, k=3):
+        super().__init__(k=k)
+        self.collection = get_collection()
+        self.k          = k
+
+    def forward(self, query: str) -> dspy.Prediction:
+        results = self.collection.query(
+            query_texts=[query],
+            n_results=self.k
+        )
+
+        # Format as DSPy passages
+        passages = results["documents"][0]
+
+        return dspy.Prediction(passages=passages)
+    
