@@ -22,16 +22,32 @@ class NovaRAGPipeline(dspy.Module):
         retrieved = self.retriever(question)
         context   = retrieved.passages
 
-        # Step 2 — Generate
-        result = self.generate(
-            context=context,
-            question=question
-        )
+        # Step 2 — Generate (with retry on template-echo bug)
+        max_retries = 2
+        answer      = None
+        reasoning   = None
+
+        for attempt in range(max_retries + 1):
+            result = self.generate(
+                context=context,
+                question=question
+            )
+
+            # Check if the model echoed the template placeholder
+            if result.answer and "{" not in result.answer and "}" not in result.answer:
+                answer    = result.answer
+                reasoning = result.reasoning
+                break
+
+        # If all retries failed, fall back gracefully
+        if answer is None:
+            answer    = "I don't have enough information to answer that."
+            reasoning = "Generation failed after retries."
 
         return dspy.Prediction(
-            answer   = result.answer,
-            context  = context,
-            reasoning= result.reasoning
+            answer=answer,
+            context=context,
+            reasoning=reasoning
         )
 
 
