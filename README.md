@@ -38,6 +38,7 @@ src/
 data/
 └── raw/knowledge_base.txt   # Fictional NovaDesk product documentation
 main.py            # Runs baseline eval -> optimization -> optimized eval
+spot_check.py      # Manual spot-check: runs 5 questions through optimized pipeline
 
 ## Quickstart
 
@@ -60,6 +61,9 @@ python src/ingest.py
 
 # 5. Run the full pipeline (baseline -> optimize -> compare)
 python main.py
+
+# 6. (Optional) Run manual spot-check on 5 sample questions
+python spot_check.py
 ```
 
 ## Results
