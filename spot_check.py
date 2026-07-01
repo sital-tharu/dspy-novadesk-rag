@@ -1,11 +1,14 @@
 # spot_check.py
 import dspy
 from src.pipeline import NovaRAGPipeline
+from src.dataset import get_dataset
+from src.optimize import optimize_pipeline
 
 lm = dspy.LM("ollama/llama3", api_base="http://localhost:11434")
 dspy.configure(lm=lm)
 
-pipeline = NovaRAGPipeline(k=3)
+trainset, _ = get_dataset()
+pipeline = optimize_pipeline(trainset)
 
 questions = [
     ("Does the Starter plan support live chat?",               "No"),
